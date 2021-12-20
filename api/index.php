@@ -114,13 +114,6 @@ function noParam($param) {
     );
 }
 
-function incorrectVal($param, $value) {
-    return array(
-        "OK" => false,
-        "error" => "Incorrect ".$param." value was provided: ".$value
-    );
-}
-
 function success() {
     return ["OK" => true];
 }
