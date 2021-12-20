@@ -1,0 +1,85 @@
+!!! 1. Ovqatlari
+!!! 2. Mahalliy bayramlari
+!!! 3. Hayvonot turlari
+
+1. Borish transporti
+2. Iqlimi
+3. Tabiati
+4. Yashash darajasi
+5. Madaniyati
+6. Ovqat turi
+7. Hayvonot olami
+8. Binolari
+
+0. Nima maqsad bilan sayohatga bormoqchisiz?
+	a. Ish yuzasidan
+	b. Davolanishga
+	c. Diniy sayohat
+	d. O'rganish uchun
+	e. Sport yuzasidan
+	f. Yangi madaniyatlarni ko'rish uchun
+
+
+1. Boradigan joyingizda qaysi fasl bo'lishini hohlaysiz?
+	a. Qish
+	b. Bahor
+	c. Yoz
+	d. Kuz
+	e. Farqi yo'q
+
+	2. Sayohatga chiqadigan joyizda nimani ko'rishni hohlaysiz?
+		a. Tabiatni
+		b. Tarixiy joylarni
+		c. Zamonaviy joylarni
+
+		3. Tabiatni -> Qanday tabiatni ko'rishni hohlaysiz?
+			a. O'rmonlarni
+			b. Sahrolarni
+			c. Suvli joylarni
+			d. Tog'larni
+			
+			4. O'rmonlarni -> O'rmonlarda maxsus kabinalari bo'lishini hohlaysizmi?
+				a. Ha
+				b. Yo'q yovvoyi tabiat bo'lishini hohlayman
+				c. Farqi yo'q
+
+			4. Suvli joylarni -> Qaysi turdagi suvli joy bo'lishini hohlaysiz?
+				a. Okean
+				b. Daryo
+				c. Sharshara
+				d. Ko'l
+				e. Dengiz
+				
+			4. Tog'larni -> Tog'da qaysi sport turi uchun imkoniyat bo'lishini hohlaysiz?
+				a. Alpinistlik
+				b. Chang'i uchish
+				c. Kamping qilish
+			
+		3. Tarixiy joylarni -> Qanday tarixiy joylarni ko'rishni hohlaysiz?
+			a. Eski uylarni
+			b. Eski saroylarni
+			c. Muzeylarni
+			d. Eski binolarni
+			e. Boshqa narsalarni
+			
+		3. Zamonaviy joylarni -> Qanday turdagi binolarni ko'rishni hohlaysiz?
+			a. Baland binolarni
+			b. G'ayrioddiy qurilgan binolarni
+			c. Boshqa turdagi binolarni
+
+
+		
+				5. Boradigan joyingizda yashash darajasi qay darajada bo'lishini hohlaysiz?
+					a. Arzon bo'lishi kerak
+					b. Qimmat lekin sifatli bo'lishi kerak
+					c. Farqi yo'q
+
+					6. Boradigan joyingizda nima asosiy o'rinda bo'lishi kerak?
+						a. Xavfsizlik
+						b. Narx navo
+						c. Turistik joylar ko'pligi
+	
+	
+	
+	
+	
