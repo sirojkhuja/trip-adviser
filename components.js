@@ -21,24 +21,7 @@ const resultsCard = `
                         <th>Рекомендуемый город</th>
                     </tr>
                 </thead>
-                <tbody id="table-data">
-                    <tr>
-                        <td>1</td>
-                        <td>Нью-Йорк</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Москва</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Дубай</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Гонконг</td>
-                    </tr>
-                </tbody>
+                <tbody id="table-data"></tbody>
             </table>
         </div>
         <button class="btn restart-btn" id="restart-btn" onclick="startOver()">Начать заново</button>

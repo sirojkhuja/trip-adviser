@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($reqBody['method']) {
         try {
-            echo json_encode(($reqBody['method'])($reqBody["params"]));
+            echo json_encode(($reqBody['method'])($reqBody['params']));
         } catch (\Throwable $th) {
             echo json_encode(array(
                 'OK' => false,
@@ -42,28 +42,69 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 function getQuestion() {
     global $db;
     $questionId = $_GET["question_id"];
-    $result = $db->sql2array("SELECT a.*, q.question_title, q.param_id FROM `tb_answers` a LEFT JOIN `tb_questions` q ON a.question_id=q.id WHERE a.question_id=".$questionId);
+    $result = $db->sql2array("SELECT a.answer_title, a.next_question_id, pv.param_value, q.question_title, p.param_name 
+    FROM `tb_answers` a 
+    LEFT JOIN `tb_param_values` pv ON a.`param_value_id`=pv.id 
+    LEFT JOIN `tb_questions` q ON a.question_id=q.id 
+    JOIN `tb_params` p ON q.param_id=p.id
+    WHERE a.question_id=".$questionId);
+    file_put_contents("result.txt", "some");
+
     if (!$result) return success();
     return $result;
 }
 
 function getResults($params) {
     global $db;
-    $rule_params = $db->sql2array('SELECT p.id, tb.param FROM (SELECT param_1 as param FROM `tb_rules` WHERE param_1_value!="" UNION ALL SELECT param_2 as param FROM `tb_rules` WHERE param_2_value!="" UNION ALL SELECT param_3 as param FROM `tb_rules` WHERE param_3_value!="") tb LEFT JOIN `tb_params` p ON tb.param=p.param_name GROUP BY p.id');
+    $rules = $db->sql2array('SELECT * FROM `tb_rules`');
+    $selected_attributes = [];
+    $selected_params = [];
 
-    $choosen_params = [];
-    $rule_params_choosen = [];
-    foreach ($rule_params as $row) {
-        array_push($rule_params, $row['id']);
+    foreach ($params as $param) {
+        $selected_params[$param['paramName']] = $param['paramValue'];
     }
 
-
-    foreach ($params as $row) {
-        if (in_array($row['paramId'], $rule_params_choosen)) {
-            array_push($choosen_params, $row['paramId']);
+    foreach ($rules as $rule) {
+        if(array_key_exists($rule['param_1'], $selected_params)) {
+            if($selected_params[$rule['param_1']] == $rule['param_1_value']) {
+                if ($rule['param_2'] != "") {
+                    if(array_key_exists($rule['param_2'], $selected_params)) {
+                        if($selected_params[$rule['param_2']] == $rule['param_2_value']) {
+                            if ($rule['param_3'] != "") {
+                                if(array_key_exists( $rule['param_3'], $selected_params)) {
+                                    if($selected_params[$rule['param_3']] == $rule['param_3_value']) {
+                                        $selected_attributes[$rule['attribute']] = $rule['attribute_value'];        
+                                    }
+                                }
+                            } else {
+                                $selected_attributes[$rule['attribute']] = $rule['attribute_value'];
+                            }
+                        }
+                    }            
+                } else {
+                    $selected_attributes[$rule['attribute']] = $rule['attribute_value'];
+                }
+            }
         }
     }
-    return $choosen_params;
+
+    $query = "SELECT city_title FROM `tb_cities`";
+    $additions = "WHERE ";
+    $i = 0;
+    foreach ($selected_attributes as $key => $attribute) {
+        $additions .= "".$key."='".$attribute."' AND ";
+        $i++;
+    }
+
+    if ($i == 0) {
+        return [];        
+    } else {
+        $query .= substr($additions, 0, -5).";";
+    }
+
+    $selected_cities = $db->sql2array($query);
+
+    return $selected_cities;
 }
 
 function noParam($param) {

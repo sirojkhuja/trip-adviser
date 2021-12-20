@@ -1,16 +1,22 @@
 nextBtn.addEventListener("click", _ => {
     let paramsArr = JSON.parse(localStorage.getItem("params")) || [];
     let nextQuestionId = 0;
+    let paramName = document.querySelector("#question-text").getAttribute("param-name");
+    let paramValue = [];
+
     if (localStorage.getItem("current_question_id") == 11) {
         let checkedElements = document.querySelectorAll('input[name="answers"]:checked');
-        checkedElements.forEach(el => console.log(el));
+        checkedElements.forEach(el => {
+            paramValue.push(el.getAttribute("param-value"));
+        });
     } else {
-        let inputEl = document.querySelector('input[name="answers"]:checked');
-        nextQuestionId = inputEl.value;
-        let paramId = inputEl.getAttribute("param_id");
-        let paramValueId = inputEl.getAttribute("param_value_id");
-        paramsArr.push({ paramId, paramValueId });
+        let answerEl = document.querySelector('input[name="answers"]:checked');
+        paramValue = answerEl.getAttribute("param-value");
+        nextQuestionId = answerEl.value;
     }
+
+    paramsArr.push({ paramName, paramValue });
+    
     localStorage.setItem("params", JSON.stringify(paramsArr))
-    loadQuestion(nextQuestionId, paramsArr);
+    loadQuestion(nextQuestionId);
 });
